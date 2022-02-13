@@ -13,7 +13,7 @@
 
 .controls-wrapper {
     padding-top: 1rem;
-    width: 40%;
+    width: 59%;
 }
 
 .btn, .btn:active {
@@ -99,4 +99,17 @@ h1 {
 
 body {
     padding-bottom: 10rem;
+}
+
+.error-out {
+    display: none;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 100, 100);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+}
+
+.error-out.show-error {
+    display: block;
 }

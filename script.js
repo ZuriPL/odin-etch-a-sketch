@@ -5,6 +5,7 @@ const sizeSlider = document.getElementById('sizeSlider');
 const sizeLabel = document.getElementById('boardSize');
 const colorInput = document.getElementsByClassName('input-field');
 const colorAccept = document.getElementsByClassName('apply-btn')
+const errorOut = document.getElementById('error-out');
 
 let boardSize = 16;
 let markerColor = "#000000";
@@ -85,9 +86,13 @@ colorAccept[0].addEventListener('click', () => {
     if (RegExp.test(inp)) {
         markerColor = inp;
     } else {
-        console.log('Invalid input')
+        errorOut.textContent = "Invalid Hex Color";
+        errorOut.classList.add('show-error');
+        setTimeout(() => {
+            errorOut.classList.remove('show-error');
+
+        }, 2000);
     };
     colorInput[0].value = '';
     colorInput[0].setAttribute('placeholder', `Set the color | Current: ${markerColor}`)
-    // markerColor = is
 });
