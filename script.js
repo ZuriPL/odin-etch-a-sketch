@@ -1,6 +1,7 @@
 const board = document.getElementById('board');
 const clearButton = document.getElementById('clear');
 const toggleGridButton = document.getElementById('toggleGrid');
+const toggleRainbow = document.getElementById('toggleRainbow');
 const sizeSlider = document.getElementById('sizeSlider');
 const sizeLabel = document.getElementById('boardSize');
 const colorInput = document.getElementsByClassName('input-field');
@@ -10,6 +11,8 @@ const errorOut = document.getElementById('error-out');
 let boardSize = 16;
 let markerColor = "#000000";
 let children = [];
+let isRainbow = false;
+let rainbowColors = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#0000FF', '#4B0082', '#6A0DAD'];
 
 function boardGen(size) {
     board.style.gridTemplateColumns = `repeat(${size}, 1fr)`
@@ -33,13 +36,15 @@ function boardGen(size) {
 
         board.appendChild(gridCell);
         
-        gridCell.addEventListener("mouseover", () => {
+        gridCell.addEventListener("mouseover", () => {           
+            if (isRainbow) {
+                markerColor = rainbowColors[Math.round(Math.random() * 6)];
+            };
             gridCell.style.cssText = `background-color: ${markerColor}; width: 100%;`
         });
     };
     
     children = Array.from(board.childNodes);
-    // JS is retarded, this code is retarded because of that
     if (children.length != size ** 2){
         children.shift();
     }
@@ -79,20 +84,24 @@ sizeSlider.addEventListener('change', () => {
 });
 
 colorAccept[0].addEventListener('click', () => {
-    let inp = colorInput[0].value.toString();
-    console.log(inp);
+    let input = colorInput[0].value.toString();
 
     let RegExp = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;
-    if (RegExp.test(inp)) {
-        markerColor = inp;
+    if (RegExp.test(input)) {
+        markerColor = input;
+        isRainbow = false;
     } else {
         errorOut.textContent = "Invalid Hex Color";
         errorOut.classList.add('show-error');
         setTimeout(() => {
             errorOut.classList.remove('show-error');
-
         }, 2000);
     };
     colorInput[0].value = '';
     colorInput[0].setAttribute('placeholder', `Set the color | Current: ${markerColor}`)
+});
+
+toggleRainbow.addEventListener('click', () => {
+    isRainbow = !isRainbow;
+    colorInput[0].setAttribute('placeholder', `Set the color | Current: ${isRainbow ? 'Rainbow' : markerColor}`)
 });
