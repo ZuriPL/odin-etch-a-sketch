@@ -10,22 +10,24 @@
 </head>
 <body>
     <h1>Etch a Sketch</h1>
-    <div class="board-container">
-        <div id="board">
-        </div>
-    </div>
-    <div class="controls-container">
-        <div class="controls-wrapper">
-            <div class="color-input-container">
-                <input type="text" placeholder="Set the color | #000000" class="input-field" />
-                <button class="btn apply-btn" id="toggleNormal">&#10004;</button>
+    <div class="wrapper">
+        <div class="board-container">
+            <div id="board" class="board">
             </div>
-            <p class="error-out" id="error-out">No error, just bad code</p>
-            <button class="btn" id="toggleRainbow">Rainbow Mode</button>
-            <button class="btn" id="clear">Clear</button>
-            <button class="btn" id="toggleGrid">Toogle Grid</button>
-            <label id="boardSize" for="sizeSlider">16x16</label>
-            <input id="sizeSlider" type="range" value="16" min="4" max="64" step="1" />
+        </div>
+        <div class="controls-container">
+            <div class="controls-wrapper">
+                <div class="color-input-container">
+                    <input type="text" placeholder="Set the color | #000000" class="input-field" />
+                    <button class="btn apply-btn" id="toggleNormal">&#10004;</button>
+                </div>
+                <p class="error-out" id="error-out">No error, just bad code</p>
+                <button class="btn" id="toggleRainbow">Rainbow Mode</button>
+                <button class="btn" id="clear">Clear</button>
+                <button class="btn" id="toggleGrid">Toogle Grid</button>
+                <label id="boardSize" for="sizeSlider">16x16</label>
+                <input id="sizeSlider" type="range" value="16" min="4" max="64" step="1" />
+            </div>
         </div>
     </div>
 </body>

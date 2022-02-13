@@ -61,10 +61,10 @@
     margin: 1rem;
 }
 
-#board {
+.board {
     border: 35px solid red;
     border-radius: 25px;
-    width: 70%;
+    width: 80%;
     aspect-ratio: 1 / 1;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
@@ -91,7 +91,8 @@
 
 h1 {
     text-align: center;
-    padding: 1.5rem;
+    padding: 3rem;
+    margin-bottom: 1rem;
     font-size: 48px;
     font-weight: 700;
     text-decoration: underline;
@@ -112,4 +113,32 @@ body {
 
 .error-out.show-error {
     display: block;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.board-container, .controls-container {
+    width: 100%;
+    flex: 1 0 0;
+}
+
+@media only screen and (min-width: 1050px) {
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+    .board {
+        width: 100%;
+    }
+    h1 {
+        margin-bottom: 4rem;
+        padding: 4rem;
+    }
 }
